@@ -11,9 +11,33 @@ PY_CONFIG_KEY = "PY_CONFIG_FILE"
 
 class ConfigLocator(object):
     def __init__(self, config_name, local_dir='./', env_key=PY_CONFIG_KEY):
-        self.config_name = config_name
-        self.env_key = env_key
-        self.local_dir = local_dir
+        self._config_name = config_name
+        self._env_key = env_key
+        self._local_dir = local_dir
+
+    @property
+    def config_name(self):
+        return self._config_name
+
+    @config_name.setter
+    def config_name(self, value):
+        self._config_name = value
+
+    @property
+    def env_key(self):
+        return self._env_key
+
+    @env_key.setter
+    def env_key(self, value):
+        self._env_key = value
+
+    @property
+    def local_dir(self):
+        return self._local_dir
+
+    @local_dir.setter
+    def local_dir(self, value):
+        self._local_dir = value
 
     def get_config_search_paths(self):
         return [os.path.join(path, self.config_name)
