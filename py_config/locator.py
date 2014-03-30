@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 PY_CONFIG_KEY = "PY_CONFIG_FILE"
 
 
-class ConfigLocator(object):
+class Locator(object):
     def __init__(self, config_name, local_dir='./', env_key=PY_CONFIG_KEY):
         self._config_name = config_name
         self._env_key = env_key

@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 
 from nose.tools import eq_
-from py_config import ConfigLocator
+from py_config import Locator
 import unittest
 
 
-class TestConfigLocator(unittest.TestCase):
+class TestLocator(unittest.TestCase):
 
-    def test_config_locator_construction(self):
+    def test_locator_construction(self):
         config_name = 'foo.bar'
         local_dir = '/foo/bar/tmp'
         env_key = 'CONFIG_KEY'
 
-        locator = ConfigLocator(
+        locator = Locator(
             config_name=config_name,
             local_dir=local_dir,
             env_key=env_key)

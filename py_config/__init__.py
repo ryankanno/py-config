@@ -1,3 +1,3 @@
-from config_locator import ConfigLocator
+from locator import Locator
 
-__all__ = [ConfigLocator]
+__all__ = [Locator]
