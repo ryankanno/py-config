@@ -8,13 +8,12 @@ logger = logging.getLogger(__name__)
 
 class Config(object):
     def __init__(self, provider):
-        self.provider = provider
+        self.adapter = provider
 
-    def get(self, name, default_value):
-        return self.provider.get(name) or default_value
+    def get(self, name, default_value=None):
+        return self.provider.get(name, default_value)
 
     def set(self, name, value):
         return self.provider.set(name, value)
-
 
 # vim: filetype=python
