@@ -8,11 +8,11 @@ class BaseProviderBackend(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get(self, key, defaul_value):
-        return
+    def get(self, key, default_value):
+        raise NotImplementedError
 
     @abc.abstractmethod
     def set(self, key, value):
-        return
+        raise NotImplementedError
 
 # vim: filetype=python
