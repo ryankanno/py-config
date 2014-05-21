@@ -6,14 +6,13 @@ import os
 
 logger = logging.getLogger(__name__)
 
-PY_CONFIG_KEY = "PY_CONFIG_FILE"
-
 
 class Locator(object):
-    def __init__(self, config_name, local_dir='./', env_key=PY_CONFIG_KEY):
-        self._config_name = config_name
+    def __init__(self, env_key, config_name, local_dir, system_dir):
         self._env_key = env_key
+        self._config_name = config_name
         self._local_dir = local_dir
+        self._system_dir = system_dir
 
     @property
     def config_name(self):
@@ -39,13 +38,26 @@ class Locator(object):
     def local_dir(self, value):
         self._local_dir = value
 
-    def get_config_search_paths(self):
-        return [os.path.join(path, self.config_name)
-                for path in self._get_search_paths]
+    @property
+    def system_dir(self):
+        return self._system_dir
+
+    @system_dir.setter
+    def system_dir(self, value):
+        self._system_dir = value
+
+    def get_config_paths(self):
+        config_paths = [os.path.join(path, self.config_name)
+                        for path in self._get_search_paths() if path is not
+                        None]
+        config_paths.insert(0, self._get_config_from_env())
+        return config_paths
+
+    def _get_config_from_env(self):
+        return os.environ.get(self.env_key, None)
 
     def _get_search_paths(self):
         return [
-            self._get_env_dir(),
             self._get_local_dir(),
             self._get_home_dir(),
             self._get_system_dir()
@@ -58,9 +70,6 @@ class Locator(object):
         return os.path.expanduser("~")
 
     def _get_system_dir(self):
-        return ""
-
-    def _get_env_dir(self):
-        return os.environ.get(self.env_key, None)
+        return self.system_dir
 
 # vim: filetype=python
