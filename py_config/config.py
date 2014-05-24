@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Config(object):
     def __init__(self, provider):
-        self.adapter = provider
+        self.provider = provider
 
     def get(self, name, default_value=None):
         return self.provider.get(name, default_value)
