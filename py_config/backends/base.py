@@ -4,6 +4,10 @@
 import abc
 
 
+class ConfigException(Exception):
+    pass
+
+
 class BaseProviderBackend(object):
     __metaclass__ = abc.ABCMeta
 
@@ -14,5 +18,23 @@ class BaseProviderBackend(object):
     @abc.abstractmethod
     def set(self, key, value):
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def delete(self, key):
+        raise NotImplementedError
+
+
+class FileProviderBackend(BaseProviderBackend):
+    def __init__(self, file_path):
+        self._file_path = file_path
+
+    @property
+    def file_path(self):
+        return self._file_path
+
+    @abc.abstractmethod
+    def write(self, file_obj):
+        raise NotImplementedError
+
 
 # vim: filetype=python

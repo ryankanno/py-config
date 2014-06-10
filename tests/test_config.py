@@ -16,5 +16,11 @@ class TestConfig(unittest.TestCase):
         eq_(config.get("bar"), "Foo")
         mock_provider.get.assert_called_once_with("bar", None)
 
+    @patch('py_config.backends.base.BaseProviderBackend')
+    def test_config_set_with_mock_provider(self, mock_provider):
+        config = Config(mock_provider)
+        config.set("boo", "moo")
+        mock_provider.set.assert_called_once_with("boo", "moo")
+
 
 # vim: filetype=python
