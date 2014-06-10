@@ -17,5 +17,8 @@ class DictionaryProviderBackend(BaseProviderBackend):
     def set(self, key, value):
         self._dict[key] = value
 
+    def delete(self, key):
+        if key in self._dict:
+            del self._dict[key]
 
 # vim: filetype=python
