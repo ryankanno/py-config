@@ -16,6 +16,8 @@ class TestDictionaryProviderBackend(unittest.TestCase):
         eq_(None, provider.get('foo2', None))
         eq_(1, provider.get('foo3', 1))
         eq_('rules', provider.get('python', None))
+        provider.delete('python')
+        eq_(-1, provider.get('python', -1))
 
 
 # vim: filetype=python
