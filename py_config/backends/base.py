@@ -32,9 +32,5 @@ class FileProviderBackend(BaseProviderBackend):
     def file_path(self):
         return self._file_path
 
-    @abc.abstractmethod
-    def write(self, file_obj):
-        raise NotImplementedError
-
 
 # vim: filetype=python

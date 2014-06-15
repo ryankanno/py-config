@@ -43,8 +43,5 @@ class IniProviderBackend(FileProviderBackend):
         except Exception as e:
             raise ConfigException(e)
 
-    def write(self, file_obj):
-        return self._config.write(file_obj)
-
 
 # vim: filetype=python
