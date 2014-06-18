@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
+from backends import get_provider
+from config import Config
 import os
-
-logger = logging.getLogger(__name__)
 
 
 class Locator(object):
     def __init__(self, env_key, config_name, local_dir, system_dir):
-        self._env_key = env_key
-        self._config_name = config_name
-        self._local_dir = local_dir
-        self._system_dir = system_dir
+        self.env_key = env_key
+        self.config_name = config_name
+        self.local_dir = local_dir
+        self.system_dir = system_dir
 
     @property
     def config_name(self):
@@ -45,6 +44,12 @@ class Locator(object):
     @system_dir.setter
     def system_dir(self, value):
         self._system_dir = value
+
+    def get_config(self):
+        for config_path in self.config_paths:
+            if os.path.exists(config_path):
+                provider = get_provider(config_path)
+                return Config(provider)
 
     def get_config_paths(self):
         config_paths = [os.path.join(path, self.config_name)
