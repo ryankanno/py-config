@@ -7,8 +7,8 @@ import ConfigParser
 
 
 class IniProviderBackend(FileProviderBackend):
-    def __init__(self, file_path):
-        super(IniProviderBackend, self).__init__(file_path)
+    def __init__(self, file_path, *args, **kwargs):
+        super(IniProviderBackend, self).__init__(file_path, *args, **kwargs)
         try:
             self._config = ConfigParser.SafeConfigParser()
             self._config.read(self.file_path)

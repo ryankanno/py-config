@@ -9,8 +9,8 @@ import yaml
 
 
 class YamlProviderBackend(FileProviderBackend):
-    def __init__(self, file_path):
-        super(YamlProviderBackend, self).__init__(file_path)
+    def __init__(self, file_path, *args, **kwargs):
+        super(YamlProviderBackend, self).__init__(file_path, *args, **kwargs)
         try:
             with open(file_path, 'r') as f:
                 self._config = yaml.load(f)

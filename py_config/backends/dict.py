@@ -5,7 +5,8 @@ from base import BaseProviderBackend
 
 
 class DictionaryProviderBackend(BaseProviderBackend):
-    def __init__(self, dict):
+    def __init__(self, dict, *args, **kwargs):
+        super(DictionaryProviderBackend, self).__init__(*args, **kwargs)
         self._dict = dict or {}
 
     def get(self, key, default_value):

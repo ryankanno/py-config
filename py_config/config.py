@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 class Config(object):
-    def __init__(self, provider):
+    def __init__(self, provider, *args, **kwargs):
+        super(Config, self).__init__(*args, **kwargs)
         self.provider = provider
 
     def get(self, name, default_value=None):
@@ -15,5 +12,8 @@ class Config(object):
 
     def set(self, name, value):
         return self.provider.set(name, value)
+
+    def delete(self, name):
+        return self.provider.delete(name)
 
 # vim: filetype=python
