@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ini import IniProviderBackend
+from .ini import IniProviderBackend
 import os
 
 

@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from base import ConfigException
-from base import FileProviderBackend
-import ConfigParser
+from .base import ConfigException
+from .base import FileProviderBackend
+try:
+    import ConfigParser as parser
+except ImportError:
+    import configparser as parser
 
 
 class IniProviderBackend(FileProviderBackend):
     def __init__(self, file_path, *args, **kwargs):
         super(IniProviderBackend, self).__init__(file_path, *args, **kwargs)
         try:
-            self._config = ConfigParser.SafeConfigParser()
+            self._config = parser.SafeConfigParser()
             self._config.read(self.file_path)
-        except ConfigParser.MissingSectionHeaderError as e:
+        except parser.MissingSectionHeaderError as e:
             raise ConfigException(e)
 
     def get(self, key, default_value=None):
@@ -34,12 +37,11 @@ class IniProviderBackend(FileProviderBackend):
     def delete(self, key):
         try:
             key_split = key.split('.')
-            if len(key_split) == 1:
-                section = key_split[0]
-                self._config.remove_section(section)
-            elif len(key_split) == 2:
+            if len(key_split) == 2:
                 section, option = key_split[0], key_split[1]
                 self._config.remove_option(section, option)
+            else:
+                raise Exception("Must include a section header")
         except Exception as e:
             raise ConfigException(e)
 

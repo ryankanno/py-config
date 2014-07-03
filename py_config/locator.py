@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from backends import get_provider
-from config import Config
+from .backends import get_provider
+from .config import Config
 import os
 
 

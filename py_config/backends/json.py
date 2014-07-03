@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from base import ConfigException
-from base import FileProviderBackend
+from .base import ConfigException
+from .base import FileProviderBackend
 
 
 class JsonProviderBackend(FileProviderBackend):
