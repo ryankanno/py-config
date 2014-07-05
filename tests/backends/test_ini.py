@@ -32,6 +32,11 @@ class TestIniProviderBackend(unittest.TestCase):
         eq_('$.50', provider.get('FoosBallSection.Price', None))
 
     @raises(ConfigException)
+    def test_ini_with_invalid_delete_should_raise_exception(self):
+        provider = IniProviderBackend(self.ini_file)
+        provider.delete('Foo')
+
+    @raises(ConfigException)
     def test_invalid_ini_should_raise_exception(self):
         IniProviderBackend(self.invalid_ini_file)
 

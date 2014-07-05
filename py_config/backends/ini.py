@@ -41,7 +41,7 @@ class IniProviderBackend(FileProviderBackend):
                 section, option = key_split[0], key_split[1]
                 self._config.remove_option(section, option)
             else:
-                raise Exception("Must include a section header")
+                raise ConfigException("Must include a section header")
         except Exception as e:
             raise ConfigException(e)
 
