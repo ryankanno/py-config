@@ -55,5 +55,7 @@ class YamlProviderBackend(FileProviderBackend):
         key, rest_of_key = key.split('.', 1)
         return self._delete(target[key], rest_of_key)
 
+    def to_dict(self):
+        raise NotImplementedError
 
 # vim: filetype=python

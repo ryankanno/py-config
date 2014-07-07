@@ -13,7 +13,7 @@ class IniProviderBackend(FileProviderBackend):
     def __init__(self, file_path, *args, **kwargs):
         super(IniProviderBackend, self).__init__(file_path, *args, **kwargs)
         try:
-            self._config = parser.SafeConfigParser()
+            self._config = ToDictParser()
             self._config.read(self.file_path)
         except parser.MissingSectionHeaderError as e:
             raise ConfigException(e)
@@ -45,5 +45,19 @@ class IniProviderBackend(FileProviderBackend):
         except Exception as e:
             raise ConfigException(e)
 
+    def to_dict(self):
+        try:
+            return self._config.as_dict()
+        except Exception as e:
+            raise ConfigException(e)
+
+
+class ToDictParser(parser.ConfigParser):
+    def as_dict(self):
+        d = dict(self._sections)
+        for k in d:
+            d[k] = dict(self._defaults, **d[k])
+            d[k].pop('__name__', None)
+        return d
 
 # vim: filetype=python

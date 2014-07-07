@@ -26,6 +26,10 @@ class BaseProviderBackend(object):
     def delete(self, key):
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def to_dict(self, key):
+        raise NotImplementedError
+
 
 class FileProviderBackend(BaseProviderBackend):
     def __init__(self, file_path, *args, **kwargs):

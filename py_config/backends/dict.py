@@ -22,4 +22,7 @@ class DictionaryProviderBackend(BaseProviderBackend):
         if key in self._dict:
             del self._dict[key]
 
+    def to_dict(self):
+        return self._dict
+
 # vim: filetype=python
