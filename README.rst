@@ -1,6 +1,9 @@
 py-configurator
 ===============
 
+.. image:: https://badge.fury.io/py/py-configurator.svg
+   :target: http://badge.fury.io/py/py-configurator
+
 .. image:: https://travis-ci.org/ryankanno/py-configurator.png?branch=master
    :target: https://travis-ci.org/ryankanno/py-configurator
 
