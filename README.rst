@@ -1,13 +1,13 @@
-py-config
-============
+py-configurator
+===============
 
-.. image:: https://travis-ci.org/ryankanno/py-config.png?branch=master
-   :target: https://travis-ci.org/ryankanno/py-config
+.. image:: https://travis-ci.org/ryankanno/py-configurator.png?branch=master
+   :target: https://travis-ci.org/ryankanno/py-configurator
 
-.. image:: https://coveralls.io/repos/ryankanno/py-config/badge.png?branch=master
-   :target: https://coveralls.io/r/ryankanno/py-config?branch=master
+.. image:: https://coveralls.io/repos/ryankanno/py-configurator/badge.png?branch=master
+   :target: https://coveralls.io/r/ryankanno/py-configurator?branch=master
 
-Just a tiny config library I tend to use a lot.
+Just a tiny configuration library I tend to use a lot.
 
 Docs
 ----

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from nose.tools import eq_
-from py_config.backends.dict import DictionaryProviderBackend
+from py_configurator.backends.dict import DictionaryProviderBackend
 import unittest
 
 

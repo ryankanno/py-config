@@ -4,7 +4,7 @@
 from nose.tools import eq_
 from nose.tools import ok_
 import os
-from py_config import Locator
+from py_configurator import Locator
 import unittest
 
 

@@ -9,10 +9,10 @@ nosetests:
 	@$(NOSETESTS) --with-doctest
 
 nosetests.coverage:
-	@$(NOSETESTS) --with-xcoverage --cover-package=py_config --cover-tests --with-doctest
+	@$(NOSETESTS) --with-xcoverage --cover-package=py_configurator --cover-tests --with-doctest
 
 flake8:
-	@flake8 py_config tests
+	@flake8 py_configurator tests
 
 clean:
 	@rm -rf .coverage

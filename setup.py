@@ -10,8 +10,8 @@ except ImportError:
     from distutils.core import setup
 
 packages = [
-    'py_config',
-    'py_config.backends',
+    'py_configurator',
+    'py_configurator.backends',
 ]
 
 here = os.path.dirname(os.path.realpath(__file__))
@@ -39,7 +39,7 @@ patterns = {
 }
 
 
-with open(os.path.join(here, 'py_config/__init__.py'), 'r') as f:
+with open(os.path.join(here, 'py_configurator/__init__.py'), 'r') as f:
     for line in f:
         for pattern, handler in patterns.items():
             m = pattern.match(line.strip())
@@ -66,16 +66,16 @@ classifiers = [
 ]
 
 setup(
-    name='py-config',
+    name='py-configurator',
     version=meta['VERSION'],
     description='Tiny configuration wrapper module',
     long_description=readme + '\n\n' + changes,
     author=meta['author'],
     author_email=meta['email'],
-    url="https://github.com/ryankanno/py-config",
+    url="https://github.com/ryankanno/py-configurator",
     packages=packages,
     package_data={'': ['LICENSE']},
-    package_dir={'py_config': 'py_config'},
+    package_dir={'py_configurator': 'py_configurator'},
     install_requires=requires,
     license=meta['license'],
     tests_require=tests_require,

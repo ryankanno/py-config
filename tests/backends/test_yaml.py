@@ -4,8 +4,8 @@
 from nose.tools import eq_
 from nose.tools import raises
 import os
-from py_config.backends.base import ConfigException
-from py_config.backends.yaml import YamlProviderBackend
+from py_configurator.backends.base import ConfigException
+from py_configurator.backends.yaml import YamlProviderBackend
 import tempfile
 import unittest
 

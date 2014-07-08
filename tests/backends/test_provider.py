@@ -3,8 +3,8 @@
 
 from nose.tools import ok_
 import os
-from py_config.backends import get_provider
-from py_config.backends.ini import IniProviderBackend
+from py_configurator.backends import get_provider
+from py_configurator.backends.ini import IniProviderBackend
 import unittest
 
 
