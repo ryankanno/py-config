@@ -16,4 +16,7 @@ class Config(object):
     def delete(self, name):
         return self.provider.delete(name)
 
+    def to_dict(self):
+        return self.provider.to_dict()
+
 # vim: filetype=python
