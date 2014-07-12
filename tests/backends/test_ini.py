@@ -40,4 +40,8 @@ class TestIniProviderBackend(unittest.TestCase):
     def test_invalid_ini_should_raise_exception(self):
         IniProviderBackend(self.invalid_ini_file)
 
+    @raises(ValueError)
+    def test_non_existent_ini_should_raise_exception(self):
+        IniProviderBackend("skfdjaskldjalksdfjasklfaf")
+
 # vim: filetype=python
