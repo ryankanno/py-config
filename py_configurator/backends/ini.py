@@ -16,8 +16,9 @@ class IniProviderBackend(FileProviderBackend):
             self._config = ToDictParser()
             file_read = self._config.read(self.file_path)
             if not file_read:
-                raise ValueError("Failed to read ini config file {0}".format(
-                    self.file_path))
+                raise ConfigException(
+                    "Failed to read ini config file {0}"
+                    .format(self.file_path))
         except parser.MissingSectionHeaderError as e:
             raise ConfigException(e)
 

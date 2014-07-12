@@ -42,7 +42,7 @@ class TestYamlProviderBackend(unittest.TestCase):
         provider.delete(None)
 
     @raises(ConfigException)
-    def test_invalid_yml_location_should_raise_exception(self):
+    def test_non_existent_yml_location_should_raise_exception(self):
         YamlProviderBackend('/foo/bar')
 
 
