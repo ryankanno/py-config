@@ -22,5 +22,17 @@ class TestConfig(unittest.TestCase):
         config.set("boo", "moo")
         mock_provider.set.assert_called_once_with("boo", "moo")
 
+    @patch('py_configurator.backends.base.BaseProviderBackend')
+    def test_config_delete_with_mock_provider(self, mock_provider):
+        config = Config(mock_provider)
+        config.delete("boo")
+        mock_provider.delete.assert_called_once_with("boo")
+
+    @patch('py_configurator.backends.base.BaseProviderBackend')
+    def test_config_to_dict_with_mock_provider(self, mock_provider):
+        config = Config(mock_provider)
+        config.to_dict()
+        mock_provider.to_dict.assert_called_once()
+
 
 # vim: filetype=python
