@@ -7,6 +7,7 @@ try:
     import ConfigParser as parser
 except ImportError:
     import configparser as parser
+import sys
 
 
 class IniProviderBackend(FileProviderBackend):
@@ -35,6 +36,9 @@ class IniProviderBackend(FileProviderBackend):
             if not self._config.has_section(section):
                 self._config.add_section(section)
             self._config.set(section, option, value)
+        except ValueError as e:
+            raise ConfigException(
+                "Key must contain a .", None, sys.exc_info()[2])
         except Exception as e:
             raise ConfigException(e)
 
