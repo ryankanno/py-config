@@ -46,7 +46,7 @@ class Locator(object):
         self._system_dir = value
 
     def get_config(self):
-        for config_path in self.config_paths:
+        for config_path in self.get_config_paths():
             if os.path.exists(config_path):
                 provider = get_provider(config_path)
                 return Config(provider)

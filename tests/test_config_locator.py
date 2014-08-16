@@ -60,5 +60,27 @@ class TestLocator(unittest.TestCase):
         ok_(os.path.join(os.path.expanduser("~"), config_name) in
             config_search_paths)
 
+    def test_config_locator_get_config(self):
+        config_name = 'foobar.ini'
+        local_dir = os.path.join(
+            os.path.dirname(os.path.realpath(__file__)),
+            'data')
+        system_dir = '/foo/bar/tmp'
+        env_key = 'CONFIG_KEY'
+        env_key_path = '/bar/config.path'
+
+        os.environ[env_key] = env_key_path
+
+        locator = Locator(
+            env_key=env_key,
+            config_name=config_name,
+            local_dir=local_dir,
+            system_dir=system_dir)
+
+        config = locator.get_config()
+
+        ok_(config is not None)
+        ok_(config.get('Foo.Bar') is "1")
+
 
 # vim: filetype=python
