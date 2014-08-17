@@ -80,7 +80,7 @@ class TestLocator(unittest.TestCase):
         config = locator.get_config()
 
         ok_(config is not None)
-        ok_(config.get('Foo.Bar') is "1")
+        ok_(config.get('Foo.Bar') == "1")
 
 
 # vim: filetype=python

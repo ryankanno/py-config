@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from nose.tools import eq_
+from nose.tools import ok_
 from nose.tools import raises
 import os
 from py_configurator.backends.base import ConfigException
@@ -38,6 +39,11 @@ class TestIniProviderBackend(unittest.TestCase):
         eq_('1', self.provider.get('Foo.Bar', None))
         self.provider.delete('Foo.Bar')
         eq_(None, self.provider.get('Foo.Bar', None))
+
+    def test_ini_to_dict(self):
+        ini_dict = self.provider.to_dict()
+        ok_(ini_dict["Foo"]["bar"] == "1")
+        ok_(ini_dict["Bar"]["foo"] == "Config Data")
 
     @raises(ConfigException)
     def test_ini_set_with_bad_key(self):

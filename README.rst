@@ -16,6 +16,11 @@ Docs
 ----
 They will end up somewhere.
 
+TODO
+----
+
+- Fix ini parser to keep case for keys
+
 License
 -------
 MIT
