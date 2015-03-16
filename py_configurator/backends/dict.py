@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from .base import BaseProviderBackend
+import copy
 
 
 class DictionaryProviderBackend(BaseProviderBackend):
     def __init__(self, dict, *args, **kwargs):
         super(DictionaryProviderBackend, self).__init__(*args, **kwargs)
-        self._dict = dict or {}
+        self._dict = copy.deepcopy(dict) or {}
 
     def get(self, key, default_value):
         try:
